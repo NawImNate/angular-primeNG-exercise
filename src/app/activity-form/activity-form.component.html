@@ -1,0 +1,161 @@
+<div class="form-container p-grid p-dir-col">
+  <form
+    class="activity-form-container p-col-12 p-md-6 p-mb-3"
+    [formGroup]="activityForm"
+  >
+    <div class="form-row p-field">
+      <label for="activity">Activity:</label>
+      <input
+        id="activity"
+        formControlName="activity"
+        pInputText
+        type="text"
+        placeholder='Ex: "Tennis", or "Guitar".'
+      />
+    </div>
+    <div class="form-row p-field">
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        pInputTextarea
+        rows="3"
+        placeholder='"Played tournaments"'
+      ></textarea>
+    </div>
+    <div class="form-row p-field">
+      <label for="date">Date Started:</label>
+      <p-calendar
+        id="date"
+        formControlName="date"
+        placeholder="Select a date"
+        [showIcon]="true"
+        dateFormat="mm/dd/yy"
+        [monthNavigator]="true"
+        [yearNavigator]="true"
+      ></p-calendar>
+    </div>
+
+    <button
+      (click)="addActivity()"
+      pButton
+      type="button"
+      label="Add New"
+      class="p-button-primary p-mt-3"
+      title="Add Activity"
+    ></button>
+  </form>
+  <app-empty-table-popup
+    *ngIf="activitiesList.length === 0"
+  ></app-empty-table-popup>
+  <div class="activity-table-container card p-col-12 p-mt-3">
+    <div class="table-wrapper">
+      <p-table
+        #dt
+        [value]="activitiesList"
+        dataKey="id"
+        [paginator]="true"
+        [rows]="10"
+        [globalFilterFields]="['activity', 'date', 'description']"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="activity" style="width: 25%">
+              Activity<p-sortIcon field="activity"></p-sortIcon>
+            </th>
+            <th pSortableColumn="date" style="width: 25%">
+              Date<p-sortIcon field="date"></p-sortIcon>
+            </th>
+            <th pSortableColumn="description" style="width: 25%">
+              Description
+              <p-sortIcon field="description"></p-sortIcon>
+            </th>
+            <!-- <th style="width: 20%">ID</th> -->
+            <th style="width: 25%">Actions</th>
+          </tr>
+          <tr>
+            <th>
+              <p-columnFilter
+                type="text"
+                field="activity"
+                matchMode="in"
+                display="menu"
+              ></p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter
+                type="date"
+                field="date"
+                display="menu"
+                [style]="{ width: '100%' }"
+                [showIcon]="true"
+                (onSelect)="filterActivities($event)"
+              >
+              </p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter
+                type="text"
+                field="description"
+                display="menu"
+              ></p-columnFilter>
+            </th>
+            <th>
+              <ng-template pTemplate="caption">
+                <div class="flex">
+                  <button
+                    pButton
+                    label="Clear"
+                    class="p-button-outlined"
+                    icon="pi pi-filter-slash"
+                    (click)="clear(dt)"
+                  ></button>
+                  <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input
+                      pInputText
+                      type="text"
+                      placeholder="Search keyword"
+                    />
+                  </span>
+                </div>
+              </ng-template>
+            </th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-activity>
+          <tr>
+            <td>{{ activity.activity }}</td>
+            <td>{{ activity.date | date }}</td>
+            <td>{{ activity.description }}</td>
+            <!-- <td [class.description-cell]="true"> -->
+            <!-- <div class="description-content">
+                {{ activity.description }}
+              </div> -->
+            <!-- </td> -->
+            <!-- <td>{{ activity.id }}</td> -->
+            <td>
+              <button
+                (click)="openEditDialog(activity)"
+                pButton
+                type="button"
+                label="Edit"
+                class="p-button-secondary"
+                title="Edit Activity"
+              ></button>
+              <button
+                (click)="deleteActivity(activity.id)"
+                pButton
+                type="button"
+                label="Delete"
+                class="p-button-danger"
+                title="Delete Activity"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
