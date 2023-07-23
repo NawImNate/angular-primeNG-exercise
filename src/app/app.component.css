@@ -1,0 +1,59 @@
+h1 {
+  margin-top: 40px;
+  font-family: "Arial", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff; /* Use a sporty color */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Body background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0; /* Set a background color for the body */
+}
+
+/* Cool abstract background effect */
+.cool-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Send the background behind other content */
+  background: linear-gradient(
+    45deg,
+    #916cf5,
+    #7ffff9,
+    #ff00dd
+  ); /* Use a multi-color gradient */
+  animation: cool-background-animation 14s ease infinite; /* Add animation to create a moving effect */
+  background-size: 300% 300%; /* Add this line to control the background size for animation */
+}
+
+/* Animation for the cool background */
+@keyframes cool-background-animation {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/* App container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh; /* Ensure the container takes up the full viewport height */
+}
+
+/* ... Add any other custom styles you need ... */
