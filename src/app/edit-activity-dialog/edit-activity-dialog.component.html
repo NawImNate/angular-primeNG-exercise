@@ -1,0 +1,42 @@
+<!-- edit-activity-dialog.component.html -->
+<div class="edit-activity-dialog-container">
+  <h2>Edit Activity</h2>
+  <form [formGroup]="editForm">
+    <div class="p-field">
+      <label for="activity">Activity:</label>
+      <input id="activity" formControlName="activity" pInputText required />
+    </div>
+    <div class="p-field">
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        pInputTextarea
+        rows="3"
+        required
+      ></textarea>
+    </div>
+    <div class="p-field">
+      <label for="date">Date:</label>
+      <input id="date" formControlName="date" pCalendar type="date" required />
+    </div>
+    <div class="buttons">
+      <button
+        pButton
+        title="Save Button"
+        type="button"
+        label="Save"
+        (click)="save()"
+        class="p-button-success"
+      ></button>
+      <button
+        title="Cancel Button"
+        pButton
+        type="button"
+        label="Cancel"
+        (click)="cancel()"
+        class="p-button-secondary"
+      ></button>
+    </div>
+  </form>
+</div>

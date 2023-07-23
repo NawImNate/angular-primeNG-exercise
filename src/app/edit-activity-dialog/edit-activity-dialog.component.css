@@ -1,0 +1,76 @@
+/* edit-activity-dialog.component.css */
+
+/* Container for the Edit Activity dialog */
+.edit-activity-dialog-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* Dialog title */
+.edit-activity-dialog-container h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+/* Form elements */
+.edit-activity-dialog-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form labels */
+.edit-activity-dialog-container form label {
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+/* Form inputs and textarea (use PrimeNG styles) */
+.edit-activity-dialog-container form input,
+.edit-activity-dialog-container form textarea {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+/* Save and Cancel buttons (use PrimeNG styles) */
+.edit-activity-dialog-container form .buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-activity-dialog-container form button {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Save button (use PrimeNG styles) */
+.edit-activity-dialog-container form button[type="button"].p-button-success {
+  background-color: #007bff; /* Use the PrimeNG primary color */
+  color: #ffffff;
+  border: none;
+}
+
+/* Cancel button (use PrimeNG styles) */
+.edit-activity-dialog-container form button[type="button"].p-button-secondary {
+  background-color: #ccc;
+  color: #ffffff;
+  border: none;
+}
+
+input {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 300;
+}
+
+.p-field textarea {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 300;
+}
